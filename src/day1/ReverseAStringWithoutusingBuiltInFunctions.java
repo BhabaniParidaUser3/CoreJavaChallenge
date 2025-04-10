@@ -58,10 +58,19 @@ public class ReverseAStringWithoutusingBuiltInFunctions {
 		//Reverse a sentence word by word. Example: Input: "I am Bhabani." Output: "Bhabani am I"
 		String sentence="I am Bhabani";
 		String[] sentence1=sentence.split(" ");
+		String output = "";
 		for(int i=sentence1.length-1;i>=0 ;i--)
 		{
-			System.out.print(sentence1[i]+" ");
+			if(output.isBlank()) {
+				output = sentence1[i];
+			} else {
+				output = " " + sentence1[i];
+			}
+//			System.out.print(sentence1[i]+" ");
 		}
+		System.out.println(output);
+		
+		//Reverse a sentence word by word without split method. Example: Input: "I am Bhabani." Output: "Bhabani am I"
 		
 
 	}
