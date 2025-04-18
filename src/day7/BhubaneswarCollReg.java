@@ -36,8 +36,7 @@ public class BhubaneswarCollReg {
 				System.out.println("Congratulations! you have been successfully registered in silicon college.\n");
 				break;
 			case 00:
-				if(siliconCollege.personList.isEmpty())
-				{
+				if (siliconCollege.personList.isEmpty()) {
 					System.out.println("Sorry No Student registerd yet\n");
 				}
 				for (int index = 0; index < siliconCollege.personList.size(); index++) {
@@ -46,14 +45,13 @@ public class BhubaneswarCollReg {
 					if (person.getType() == "Student") {
 						Student st = (Student) person;
 						System.out.println("Name: " + st.getName() + " " + "Semester: " + st.getSemester() + " "
-								+ "Branch :" + st.getBranch()+"\n");
+								+ "Branch :" + st.getBranch() + "\n");
 					}
 				}
 				break;
 
 			case 11:
-				if(siliconCollege.personList.isEmpty())
-				{
+				if (siliconCollege.personList.isEmpty()) {
 					System.out.println("Sorry No Faculty registerd yet\n");
 				}
 				for (int index = 0; index < siliconCollege.personList.size(); index++) {
@@ -61,13 +59,13 @@ public class BhubaneswarCollReg {
 					// System.out.println(person.getType());
 					if (person.getType() == "faculty") {
 						Faculty ft = (Faculty) person;
-						System.out
-								.println("Name: " + ft.getName() + " " + "Experience: " + ft.getExperience() + "Years\n");
+						System.out.println(
+								"Name: " + ft.getName() + " " + "Experience: " + ft.getExperience() + "Years\n");
 					}
 				}
 				break;
 			case 5:
-				System.out.println("Exit From program & Execution stopped,Thank You!!!");
+				System.out.println("Program Exited Successfully");
 				keeprunning = false;
 				break;
 			default:
