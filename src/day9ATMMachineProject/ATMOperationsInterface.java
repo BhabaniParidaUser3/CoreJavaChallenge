@@ -1,8 +1,8 @@
 package day9ATMMachineProject;
 
-public interface ATMOpearationsInterface {
+public interface ATMOperationsInterface {
 
-	public void viewBlance();
+	public void viewBalance();
 
 	public void depositAmount(double depositAmount);
 
