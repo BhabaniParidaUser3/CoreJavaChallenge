@@ -32,15 +32,24 @@ public class ATMOperationImplementation implements ATMOperationsInterface {
 
 	@Override
 	public void withdrawAmount(double withdrawAmount) {
-		if (withdrawAmount <= atm.getBalance()) {
-			System.out.println("Collect the cash" + withdrawAmount);
-			atm.setBalance(atm.getBalance() - withdrawAmount);
-			String entry=LocalDateTime.now()+" - "+withdrawAmount+" Withdrawn\n";
-			minist.add(entry);			
-			viewBalance();
-		} else {
-			System.out.println("Insufficient Balance!!!");
+		if(withdrawAmount % 100==0  || withdrawAmount % 500==0)
+		{
+			if (withdrawAmount <= atm.getBalance()) {
+				System.out.println("Collect the cash" + withdrawAmount);
+				atm.setBalance(atm.getBalance() - withdrawAmount);
+				String entry=LocalDateTime.now()+" - "+withdrawAmount+" Withdrawn\n";
+				minist.add(entry);			
+				viewBalance();
+			} else {
+				System.out.println("Insufficient Balance!!!");
+			}
+			
 		}
+		else
+		{
+			System.out.println("Please enter the amount in multiples of 100 and 500\n");
+		}
+		
 
 	}
 
