@@ -8,26 +8,42 @@ public class ATMMainClass {
 
 	public static void main(String[] args) {
 		
+		Scanner sc = new Scanner(System.in);
+
 		Map<Integer,User> userDatabase=new HashMap<>();
 		userDatabase.put(12345, new User(12345,11111));
 		userDatabase.put(56789, new User(56789,22222));
 				
 		
-		Scanner sc = new Scanner(System.in);
 		boolean keeprunning = true;
-
-		/*
-		 * int atmnumber = 12345; int atmpin = 8895;
-		 */
-		System.out.println("Welcome To ATM Machine !\n");
-		System.out.println("Enter ATM Number: ");
-		int enteredAtmcardnumber = sc.nextInt();
-		System.out.println("Enter ATM Pin: ");
-		int enteredAtmpinnumber = sc.nextInt();
 		
-		User currentuser=userDatabase.get(enteredAtmcardnumber);
-		if (currentuser != null && currentuser.getatmPin()==enteredAtmpinnumber) {
-			ATMOperationImplementation AOI = new ATMOperationImplementation(currentuser);
+		int maxAttempts = 3;
+		int attempts = 0;
+		boolean authenticated = false;
+		User currentUser = null;
+		System.out.println("Welcome To ATM Machine !\n");
+		while (attempts < maxAttempts) {
+			
+			System.out.println("Enter ATM Number: ");
+			int enteredAtmcardnumber = sc.nextInt();
+			System.out.println("Enter ATM Pin: ");
+			int enteredAtmpinnumber = sc.nextInt();
+			
+			User currentuser=userDatabase.get(enteredAtmcardnumber);
+			if (currentuser != null && currentuser.getatmPin()==enteredAtmpinnumber) {
+				authenticated = true;
+		        break;
+			} else {
+		        attempts++;
+		        System.out.println("Incorrect ATM Number or PIN! Attempts left: " + (maxAttempts - attempts));
+		    }
+
+			
+		}
+		
+		if (authenticated) {
+		    System.out.println("Login successful!\n");
+			ATMOperationImplementation AOI = new ATMOperationImplementation(currentUser);
 
 			while (keeprunning) {
 				System.out.println(
@@ -63,7 +79,7 @@ public class ATMMainClass {
 
 			}
 		} else {
-			System.out.println("Incorrect ATM number or ATM pin !!!");
+			System.out.println("Too many incorrect attempts. Your account has been locked. Please contact the bank.");
 		}
 
 	}
